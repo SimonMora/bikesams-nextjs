@@ -1,15 +1,17 @@
-import React from 'react'
-import { ENV } from '@/utils'
-import { useAuth } from '@/hooks'
+import { ENV } from '@/utils';
+import { useAuth } from '@/hooks';
+import { Button } from 'semantic-ui-react';
 
 export default function HomePage() {
-  const data = useAuth()  
-  console.log(data);
+  const { user, logout } = useAuth();  
+  console.log(user);
   
   return (
     <div>
         <h2>You are in the Home Page</h2>
-        <h3>localStorage saved token: {ENV.TOKEN}</h3>
+        <Button onClick={logout} basic>
+          Logout
+        </Button>
     </div>
   )
 }

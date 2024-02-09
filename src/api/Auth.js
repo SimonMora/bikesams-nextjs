@@ -30,8 +30,44 @@ async function reSendVerificationCode(email) {
     }
 }
 
+async function login(email, password) {
+    try {
+        const response = await Auth.signIn({
+            username: email,
+            password
+        });
+
+        const session = Auth.currentAuthenticatedUser({
+            bypassCache: false,
+        });
+
+        return session;
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function retrieveSession() {
+    const authContxt = await Auth.currentSession({
+        bypassCache: false,
+    });
+
+    return authContxt.getAccessToken().getJwtToken();
+}
+
+async function logout() {
+    try {
+        await Auth.signOut();
+    } catch (error) {
+        throw error;
+    }
+}
+
 export const authControl = {
     register,
     confirm,
     reSendVerificationCode,
+    login,
+    retrieveSession,
+    logout
 };

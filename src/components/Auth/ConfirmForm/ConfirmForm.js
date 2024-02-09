@@ -66,7 +66,7 @@ export function ConfirmForm() {
               onChange={formik.handleChange} 
               error={formik.errors.verificationCode}
             />
-            <Form.Button type="submit" fluid loading={loading}>
+            <Form.Button type="submit" fluid loading={formik.isSubmitting}>
                 Confirm Account
             </Form.Button>
         </Form>
