@@ -1,17 +1,10 @@
-import { ENV } from '@/utils';
-import { useAuth } from '@/hooks';
-import { Button } from 'semantic-ui-react';
+import { BasicLayout } from '@/layouts';
 
 export default function HomePage() {
-  const { user, logout } = useAuth();  
-  console.log(user);
   
   return (
-    <div>
+    <BasicLayout>
         <h2>You are in the Home Page</h2>
-        <Button onClick={logout} basic>
-          Logout
-        </Button>
-    </div>
+    </BasicLayout>
   )
 }
