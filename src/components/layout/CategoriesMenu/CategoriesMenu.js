@@ -8,20 +8,23 @@ import styles from './CategoriesMenu.module.scss';
 export function CategoriesMenu() {
   
   const [categories, setCategories] = useState(null);
-  useEffect( async () => {
-    try {
-        const fetchCatg = await categContrl.getAllCategories();
-        setCategories(fetchCatg);
-    } catch (error) {
-        console.log(error);
+  useEffect(() => {
+    async function fetchCategories() {
+        try {
+            const fetchCatg = await categContrl.getAllCategories();
+            setCategories(fetchCatg);
+        } catch (error) {
+            console.log(error);
+        }
     }
+    fetchCategories();
   }, [])
   
   return (
     <div className={styles.categories}>
         {   
             map(categories, (category) => (
-                <Link key={category.categID} href={`/categories/${category.categPath}`}>
+                <Link key={category.categId} href={`/categories/${category.categPath}`}>
                     {category.categName}
                 </Link>   
             )) 
