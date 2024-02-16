@@ -21,7 +21,7 @@ export function ConfirmForm() {
     validationSchema: validateForm(),
     validateOnChange: false,
     onSubmit: async(formValue) => {
-        try {s
+        try {
             const response = await authControl.confirm(formValue.email, formValue.verificationCode);
             router.push("/join/login");
         } catch (error) {

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tinymce/tinymce-react": "4.3.0",
     "amazon-cognito-identity-js": "^6.3.7",
     "aws-amplify": "5.0.22",
     "aws-sdk": "^2.1549.0",

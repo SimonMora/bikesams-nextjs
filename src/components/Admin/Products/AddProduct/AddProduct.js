@@ -2,6 +2,7 @@
 import { Modal } from "@/components/Shared";
 import { useState } from "react";
 import { Button } from "semantic-ui-react";
+import { ProductForm } from "../ProductForm";
 
 
 export function AddProduct() {
@@ -16,7 +17,7 @@ export function AddProduct() {
           onClose={ openCloseModal }
           title="New Product"
         > 
-            <h2>Modal Content</h2>
+            <ProductForm onClose={openCloseModal}/>
         </Modal.BasicModal>
     </>
   );
