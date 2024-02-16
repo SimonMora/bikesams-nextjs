@@ -1,5 +1,4 @@
 
-
 import { BasicLayout } from '@/layouts';
 import styles from './admin.module.scss';
 import { Container, Tab } from 'semantic-ui-react';
@@ -7,6 +6,7 @@ import { useAuth } from '@/hooks';
 import { useRouter } from 'next/router';
 import { Search } from '@/components/Shared';
 import { Products } from '@/components/Admin';
+
 
 export default function AdminPage() {
     const { isAdmin } = useAuth();
@@ -23,8 +23,8 @@ export default function AdminPage() {
             render: () => (
                 <Tab.Pane>
                     <div className={styles.actions}>
-                        <Search />
-                        <span>Add product</span>
+                        <Search queryName= "prodSearch" />
+                        <Products.AddProduct />
                     </div>
                     <Products.ListProducts />
                 </Tab.Pane>

@@ -1,12 +1,25 @@
-import React from 'react'
+import { useEffect, useState } from 'react';
 import { Icon, Image, Table } from 'semantic-ui-react';
 
 import styles from './Product.module.scss';
 import { fn } from '@/utils';
+import { checkImageExist } from '@/utils/functions/checkImageExist';
+
+const NOT_FOUND_IMAGE = "/image/not-found.png";
 
 export default function Product(props) {
     const { product } = props;
-    const image = fn.getImageUrl(product.prodId);
+    const [image, setImage] = useState(NOT_FOUND_IMAGE);
+
+    useEffect(() => {
+      const imageUrl = fn.getImageUrl(product.prodId);
+      checkImageExist(imageUrl, (exist) => {
+        if (exist) {
+          setImage(imageUrl);
+        }
+      });
+    }, [product]);
+    
 
   return (
     <>
