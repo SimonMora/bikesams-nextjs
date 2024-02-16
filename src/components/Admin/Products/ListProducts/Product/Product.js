@@ -7,12 +7,12 @@ import { fn } from '@/utils';
 export default function Product(props) {
     const { product } = props;
     const image = fn.getImageUrl(product.prodId);
-    console.log(image);
+
   return (
     <>
         <Table.Cell>{product.prodId}</Table.Cell>
         <Table.Cell>
-            <Image className={styles.iamge} src={image} alt={product.prodTitle} /> 
+            <Image className={styles.image} src={image} alt={product.prodTitle} /> 
         </Table.Cell>
         <Table.Cell>{product.prodTitle}</Table.Cell>
         <Table.Cell>{product.prodPrice} $</Table.Cell>
