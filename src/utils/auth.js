@@ -3,7 +3,7 @@ import { authControl } from "@/api";
 export async function fetchAuthenticatedRequest(url, params) {
 
     const token = await authControl.retrieveSession();
-
+    console.log(token);
     const logout = () => {
         authControl.logout();
         window.location.replace("/");
@@ -21,7 +21,7 @@ export async function fetchAuthenticatedRequest(url, params) {
         };
         try {
             const response = await fetch(url, paramsAuth);
-        return response;
+            return response;
         } catch (error) {
             throw error;
         }
