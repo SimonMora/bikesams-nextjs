@@ -2,22 +2,22 @@ import * as Yup from 'yup';
 
 export function initialValues() {
     return {
-        ProdTitle: "",
-        ProdDescription: "",
-        ProdPrice: "",
-        ProdStock: "",
-        ProdPath: "",
-        ProdCategId: null,
+        prodTitle: "",
+        prodDescription: "",
+        prodPrice: "",
+        prodStock: "",
+        prodPath: "",
+        prodCategId: "",
     };
 }
 
 export function validationSchema() {
     Yup.object({
-        ProdTitle: Yup.string().required(true),
-        ProdDescription: Yup.string().required(true),
-        ProdPrice: Yup.number().required(true),
-        ProdStock: Yup.number().required(true),
-        ProdPath: Yup.string().required(true),
-        ProdCategId: Yup.number().required(true),
+        prodTitle: Yup.string().required(true),
+        prodDescription: Yup.string().required(true),
+        prodPrice: Yup.number().required(true),
+        prodStock: Yup.number().required(true),
+        prodPath: Yup.string().required(true),
+        prodCategId: Yup.number().required(true),
     });
 }

@@ -34,30 +34,32 @@ export function ProductForm(props) {
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
-                await productControl.create(formValue);
-                onClose();
+              console.log(formValue);
+              console.log(formik);
+              await productControl.create(formValue);
+              onClose();
             } catch (error) {
-                console.log(error);
+              console.log(error);
             }
-        }
+        },
     });
 
   return (
-    <div>
+    <>
         <Form onSubmit={formik.handleSubmit}>
             <Form.Input 
-              name="ProdTitle" 
+              name="prodTitle" 
               placeholder="Name"
-              value={formik.values.ProdTitle}
+              value={formik.values.prodTitle}
               onChange={formik.handleChange}
-              error={formik.errors.ProdTitle}  
+              error={formik.errors.prodTitle}  
             />
             <Form.Input 
-              name="ProdPath" 
+              name="prodPath" 
               placeholder="Slug"
-              value={formik.values.ProdPath}
+              value={formik.values.prodPath}
               onChange={formik.handleChange}
-              error={formik.errors.ProdPath}  
+              error={formik.errors.prodPath}  
             />
             <Editor
                 apiKey="y7stszftv1ah92um5axw3qmeck813kr6ja1s290jq3rw1q62"
@@ -74,43 +76,44 @@ export function ProductForm(props) {
                     'alignright alignjustify | bullist numlist outdent indent | ' +
                     'removeformat | help',
                 }}
-                initialValue={formik.values.ProdDescription}
+                initialValue={formik.values.prodDescription}
                 onBlur={(event) => {
-                    formik.setFieldValue("ProdDescription", event.target.getContent())
+                    formik.setFieldValue("prodDescription", event.target.getContent())
                 }}
-            />
+                error={formik.errors.prodDescription}
+              />
 
             <Separator height={20} />
             <Form.Dropdown 
-              name="ProdCategId"
+              name="prodCategId"
               placeholder="Product Category"
               search
               selection
               fluid 
               options={categories}
-              value={formik.values.ProdCategId}
+              value={formik.values.prodCategId}
               onChange={(_, data) => {
-                formik.setFieldValue("ProdCategId",data.value);
+                formik.setFieldValue("prodCategId", data.value);
               }}
-              error={formik.errors.ProdCategId} 
+              error={formik.errors.prodCategId} 
             />
 
             <Form.Group widths="equal">
                 <Form.Input 
-                  name="ProdStock"
+                  name="prodStock"
                   type="number" 
                   placeholder="Stock"
-                  value={formik.values.ProdStock}
+                  value={formik.values.prodStock}
                   onChange={formik.handleChange}
-                  error={formik.errors.ProdStock} 
+                  error={formik.errors.prodStock} 
                 />
                 <Form.Input 
-                  name="ProdPrice"
+                  name="prodPrice"
                   type="number" 
                   placeholder="Price"
-                  value={formik.values.ProdPrice}
+                  value={formik.values.prodPrice}
                   onChange={formik.handleChange}
-                  error={formik.errors.ProdPrice} 
+                  error={formik.errors.prodPrice} 
                 />
             </Form.Group>
 
@@ -118,6 +121,6 @@ export function ProductForm(props) {
                 Add
             </Form.Button>
         </Form>
-    </div>
+    </>
   )
 }
