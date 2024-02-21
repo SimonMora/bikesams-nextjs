@@ -7,10 +7,10 @@ import { size, map } from 'lodash';
 import Product from "./Product/Product";
 import { useRouter } from "next/router";
 
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 20;
 
-export function ListProducts() {
-
+export function ListProducts(props) {
+    const { reload, onReload } = props;
     const [products, setProducts] = useState(null);
     const [totalPages, setTotalPages] = useState(null);
     const { query } = useRouter();
@@ -30,12 +30,12 @@ export function ListProducts() {
             console.log(error);
         }
       })();
-    }, [query.page, query.prodSearch]);
+    }, [reload, query.page, query.prodSearch]);
 
     if(!products) return <Loading text="Loading Products" />;
     
     return (
-        <div>
+        <>
             <Table striped>
                 <Table.Header>
                     <Table.Row>
@@ -60,13 +60,13 @@ export function ListProducts() {
                     {
                         map(products, (product) => (
                             <Table.Row key={product.prodId}>
-                                <Product product={product}/>
+                                <Product product={product} onReload={onReload}/>
                             </Table.Row>
                         ))
                     }
                 </Table.Body>
             </Table>
             <Paginator currentPage={page} totalPages={totalPages} />
-        </div>
+        </>
     );
 }

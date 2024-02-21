@@ -41,7 +41,52 @@ async function createProduct(data) {
     }
 }
 
+async function updateProduct(prodId, data) {
+    try {
+        const url = `${ENV.API_URL}${ENV.ENDPOINTS.PRODUCT}/${prodId}`;
+        const params = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': "application/json",
+            },
+            body: JSON.stringify(data),
+        };
+
+        const response = await fetchAuthenticatedRequest(url, params);
+        
+        if (response.status !== 200) throw response;
+        
+        return true;
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function updateProductImage(productId, image) {
+    
+    try {
+        const url = `${ENV.MEDIA_API}${productId}.jpg`;
+        const params = {
+            method: 'PUT',
+            header: {
+                "Content-Type": "image/jpeg",
+            },
+            body: image,
+        };
+    
+        const response = await fetchAuthenticatedRequest(url, params);
+    
+        if (response.status !== 200) throw response;
+        
+        return true; 
+    } catch (error) {
+        throw error;
+    }
+}
+
 export const productControl = {
     getAll: getPaginatedProducts,
     create: createProduct,
+    update: updateProduct,
+    updateImage: updateProductImage,
 };

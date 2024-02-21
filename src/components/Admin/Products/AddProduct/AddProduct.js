@@ -5,7 +5,8 @@ import { Button } from "semantic-ui-react";
 import { ProductForm } from "../ProductForm";
 
 
-export function AddProduct() {
+export function AddProduct(props) {
+  const { onReload } = props;
     const [openModal, setOpenModal] = useState(false);
 
     const openCloseModal = () => setOpenModal((prevState) => !prevState);
@@ -17,7 +18,7 @@ export function AddProduct() {
           onClose={ openCloseModal }
           title="New Product"
         > 
-            <ProductForm onClose={openCloseModal}/>
+            <ProductForm onClose={openCloseModal} onReload={onReload}/>
         </Modal.BasicModal>
     </>
   );
