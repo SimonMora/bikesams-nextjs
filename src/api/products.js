@@ -62,13 +62,31 @@ async function updateProduct(prodId, data) {
     }
 }
 
+async function deleteProduct(prodId) {
+    try {
+        const url = `${ENV.API_URL}${ENV.ENDPOINTS.PRODUCT}/${prodId}`;
+        const params = {
+            method: 'DELETE',
+            headers: {},
+        };
+
+        const response = await fetchAuthenticatedRequest(url, params);
+        
+        if (response.status !== 200) throw response;
+        
+        return true;
+    } catch (error) {
+        throw error;
+    }
+}
+
 async function updateProductImage(productId, image) {
     
     try {
         const url = `${ENV.MEDIA_API}${productId}.jpg`;
         const params = {
-            method: 'PUT',
-            header: {
+            method: "PUT",
+            headers: {
                 "Content-Type": "image/jpeg",
             },
             body: image,
@@ -89,4 +107,5 @@ export const productControl = {
     create: createProduct,
     update: updateProduct,
     updateImage: updateProductImage,
+    delete: deleteProduct,
 };
