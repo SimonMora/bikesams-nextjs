@@ -5,7 +5,7 @@ import { Container, Tab } from 'semantic-ui-react';
 import { useAuth } from '@/hooks';
 import { useRouter } from 'next/router';
 import { Search } from '@/components/Shared';
-import { Products } from '@/components/Admin';
+import { Categories, Products } from '@/components/Admin';
 import { useState } from 'react';
 
 
@@ -42,7 +42,7 @@ export default function AdminPage() {
                         <div />
                         <span>Add category</span>
                     </div>
-                    <h2>Categories...</h2>
+                    <Categories.ListCategories  reload={reload} onReload={onReload}/>
                 </Tab.Pane>
             ),
         },

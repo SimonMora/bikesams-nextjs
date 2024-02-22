@@ -1,5 +1,7 @@
 import { BasicModal } from "./BasicModal"; 
+import { ConfirmModal } from "./Confirm";
 
 export const Modal = {
-    BasicModal,
+    Basic: BasicModal,
+    Confirm: ConfirmModal,
 };

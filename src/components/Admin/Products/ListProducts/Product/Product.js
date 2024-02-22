@@ -7,6 +7,7 @@ import { checkImageExist } from '@/utils/functions/checkImageExist';
 import { Modal } from '@/components/Shared';
 import { ProductForm } from '../../ProductForm';
 import { ProductImageForm } from '../../ProductImageForm';
+import { productControl } from '@/api';
 
 const NOT_FOUND_IMAGE = "/image/not-found.png";
 
@@ -15,6 +16,7 @@ export default function Product(props) {
     const [image, setImage] = useState(NOT_FOUND_IMAGE);
     const [openModal, setOpenModal] = useState(false);
     const [modalContent, setModalContent] = useState(null);
+    const [showConfirm, setShowConfirm] = useState(false);
 
     useEffect(() => {
       const imageUrl = fn.getImageUrl(product.prodId);
@@ -44,6 +46,19 @@ export default function Product(props) {
       setOpenModal(true);
     };
 
+    const openConfirmModal = () => setShowConfirm((prevState) => !prevState);
+
+    const deleteProduct = async () => {
+      try {
+        console.log("Will eliminate ", product.prodTitle);
+        await productControl.delete(product.prodId);
+        openConfirmModal();
+        onReload();
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
   return (
     <>
         <Table.Cell>{product.prodId}</Table.Cell>
@@ -56,12 +71,19 @@ export default function Product(props) {
         <Table.Cell className={styles.actions}>
             <Icon name="pencil" link onClick={openEditProd}/>
             <Icon name="image" link onClick={openProdImage}/>
-            <Icon name="trash" link />
+            <Icon name="trash" link onClick={openConfirmModal}/>
         </Table.Cell>
 
-        <Modal.BasicModal show={openModal} onClose={closeModal} title={`Edit ${product.prodTitle}`}>
+        <Modal.Confirm 
+          open={showConfirm}
+          onCancel={openConfirmModal}
+          onConfirm={deleteProduct}
+          content={`Are you sure to eliminate product (${product.prodTitle})?`}
+        />
+
+        <Modal.Basic show={openModal} onClose={closeModal} title={`Edit ${product.prodTitle}`}>
           {modalContent}
-        </Modal.BasicModal>
+        </Modal.Basic>
     </>
   )
 }

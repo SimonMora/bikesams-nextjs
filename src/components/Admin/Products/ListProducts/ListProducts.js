@@ -1,5 +1,5 @@
 import { productControl } from "@/api/products";
-import { Loading, Paginator } from "@/components/Shared";
+import { Loading, NoResults, Paginator } from "@/components/Shared";
 
 import { useEffect, useState } from "react";
 import { Table } from "semantic-ui-react";
@@ -52,7 +52,7 @@ export function ListProducts(props) {
                     {
                         size(products) === 0 && (
                             <Table.Cell colSpan="5">
-                                <span>No results</span>
+                                <NoResults text="There are no products." />
                             </Table.Cell>
                         )
                     }

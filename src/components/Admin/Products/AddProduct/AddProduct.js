@@ -13,13 +13,13 @@ export function AddProduct(props) {
   return (
     <>
         <Button primary onClick={ openCloseModal }>Add Product</Button>
-        <Modal.BasicModal 
+        <Modal.Basic 
           show={openModal}
           onClose={ openCloseModal }
           title="New Product"
         > 
             <ProductForm onClose={openCloseModal} onReload={onReload}/>
-        </Modal.BasicModal>
+        </Modal.Basic>
     </>
   );
 }
