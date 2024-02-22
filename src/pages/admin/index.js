@@ -6,9 +6,11 @@ import { useAuth } from '@/hooks';
 import { useRouter } from 'next/router';
 import { Search } from '@/components/Shared';
 import { Products } from '@/components/Admin';
+import { useState } from 'react';
 
 
 export default function AdminPage() {
+    const [reload, setReload] = useState(false);
     const { isAdmin } = useAuth();
     const router = useRouter();
 
@@ -17,6 +19,8 @@ export default function AdminPage() {
         return null;
     }
 
+    const onReload = () => setReload((prevState) => !prevState);
+
     const panes = [
         {
             menuItem:"Products",
@@ -24,9 +28,9 @@ export default function AdminPage() {
                 <Tab.Pane>
                     <div className={styles.actions}>
                         <Search queryName= "prodSearch" />
-                        <Products.AddProduct />
+                        <Products.AddProduct onReload={onReload} />
                     </div>
-                    <Products.ListProducts />
+                    <Products.ListProducts reload={reload} onReload={onReload}/>
                 </Tab.Pane>
             ),
         },

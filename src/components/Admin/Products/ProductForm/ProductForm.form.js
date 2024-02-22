@@ -1,18 +1,18 @@
 import * as Yup from 'yup';
 
-export function initialValues() {
+export function initialValues(data) {
     return {
-        prodTitle: "",
-        prodDescription: "",
-        prodPrice: "",
-        prodStock: "",
-        prodPath: "",
-        prodCategId: "",
+        prodTitle: data?.prodTitle || "",
+        prodDescription: data?.prodDescription || "",
+        prodPrice: data?.prodPrice || "",
+        prodStock: data?.prodStock || "",
+        prodPath: data?.prodPath || "",
+        prodCategId: data?.prodCategoryId || null,
     };
 }
 
 export function validationSchema() {
-    Yup.object({
+    return Yup.object({
         prodTitle: Yup.string().required(true),
         prodDescription: Yup.string().required(true),
         prodPrice: Yup.number().required(true),

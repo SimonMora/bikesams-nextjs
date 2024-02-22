@@ -9,7 +9,7 @@ import { initialValues, validationSchema } from "./ProductForm.form";
 import { productControl } from "@/api/products";
 
 export function ProductForm(props) {
-    const { onClose } = props;
+    const { onClose, onReload, product } = props;
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
@@ -29,14 +29,18 @@ export function ProductForm(props) {
     }, []);
     
     const formik = useFormik({
-        initialValues: initialValues(),
+        initialValues: initialValues(product),
         validationSchema: validationSchema(),
         validateOnChange: false,
         onSubmit: async (formValue) => {
             try {
-              console.log(formValue);
-              console.log(formik);
-              await productControl.create(formValue);
+              if (product) {
+                //TODO
+                await productControl.update(product.prodId, formValue);
+              } else {
+                await productControl.create(formValue);
+              }
+              onReload();
               onClose();
             } catch (error) {
               console.log(error);
@@ -118,7 +122,7 @@ export function ProductForm(props) {
             </Form.Group>
 
             <Form.Button type="submit" fluid loading={formik.isSubmitting}>
-                Add
+                Send
             </Form.Button>
         </Form>
     </>
