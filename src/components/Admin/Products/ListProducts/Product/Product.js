@@ -50,14 +50,13 @@ export default function Product(props) {
 
     const deleteProduct = async () => {
       try {
-        console.log("Will eliminate ", product.prodTitle);
         await productControl.delete(product.prodId);
         openConfirmModal();
         onReload();
       } catch (error) {
-        console.error(error)
+        console.error(error);
       }
-    }
+    };
 
   return (
     <>
