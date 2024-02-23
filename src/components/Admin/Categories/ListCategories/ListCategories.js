@@ -13,13 +13,12 @@ export function ListCategories(props) {
       (async() => {
         try {
             const response = await categContrl.getAllCategories();
-            console.log(response);
             setCategories(response);
         } catch (error) {
-            console.error(error)
+            console.error(error);
         }
-      })()
-    }, [reload])
+      })();
+    }, [reload]);
     
     if(!categories) return <Loading text="Loading categories" />
 
