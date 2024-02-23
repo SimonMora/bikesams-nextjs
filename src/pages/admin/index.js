@@ -5,7 +5,7 @@ import { Container, Tab } from 'semantic-ui-react';
 import { useAuth } from '@/hooks';
 import { useRouter } from 'next/router';
 import { Search } from '@/components/Shared';
-import { Categories, Products } from '@/components/Admin';
+import { Categories, Products, Users } from '@/components/Admin';
 import { useState } from 'react';
 
 
@@ -50,7 +50,7 @@ export default function AdminPage() {
             menuItem:"Users",
             render: () => (
                 <Tab.Pane>
-                    <h2>Users...</h2>
+                    <Users.ListUsers />
                 </Tab.Pane>
             ),
         },
