@@ -39,8 +39,8 @@ export default function AdminPage() {
             render: () => (
                 <Tab.Pane>
                     <div className={styles.actions}>
-                        <div />
-                        <span>Add category</span>
+                        <Search queryName= "categSearch" />
+                        <Categories.AddCategory onReload={onReload}/>
                     </div>
                     <Categories.ListCategories  reload={reload} onReload={onReload}/>
                 </Tab.Pane>
