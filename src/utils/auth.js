@@ -3,7 +3,6 @@ import { authControl } from "@/api";
 export async function fetchAuthenticatedRequest(url, params) {
 
     const token = await authControl.retrieveSession();
-    console.log(token);
     const logout = () => {
         authControl.logout();
         window.location.replace("/");

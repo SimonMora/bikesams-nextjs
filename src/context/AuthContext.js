@@ -36,6 +36,7 @@ export function AuthProvider(props) {
     const logout = async () => {
         try {
             setUser(null);
+            setIsAdmin(false);
             await authControl.logout();
         } catch (error) {
             throw error;
