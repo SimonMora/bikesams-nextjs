@@ -26,7 +26,7 @@ export function AvatarForm() {
                 render.readAsArrayBuffer(formValues.file);
                 render.onload = async () => {
                     const image = render.result;
-                    const response = userContrl.updateAvatar(user.UUID, image);
+                    const response = userContrl.updateAvatar(user.userUUID, image);
                     setLoading(false);
                 };
             } catch (error) {
@@ -78,7 +78,8 @@ export function AvatarForm() {
             }
         </div>
         <Button 
-          primary 
+          primary
+          type="submit" 
           loading={loading} 
           onClick={formik.handleSubmit}
         >

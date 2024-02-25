@@ -2,7 +2,8 @@ import { Container, Tab } from 'semantic-ui-react';
 import styles from './account.module.scss';
 import { BasicLayout } from '@/layouts';
 import { useAuth } from '@/hooks';
-import { AvatarForm } from '@/components/Account/Settings/AvatarForm';
+import { Separator } from '@/components/Shared';
+import { Settings } from '@/components/Account/Settings';
 
 
 export default function AccountPage() {
@@ -14,7 +15,9 @@ export default function AccountPage() {
             menuItem:"Information",
             render: () => (
                 <Tab.Pane>
-                    <AvatarForm />
+                    <Settings.AvatarForm />
+                    <Separator height={20} />
+                    <Settings.NameForm />
                 </Tab.Pane>
             ),
         },
@@ -39,7 +42,7 @@ export default function AccountPage() {
                 key: 20,
                 icon: "log out",
                 content:"Close session",
-                onClick: logout(),
+                onClick: () => logout(),
             }
         },
 

@@ -1,6 +1,8 @@
 import { AvatarForm } from './AvatarForm';
+import { NameForm } from './NameForm';
 
 
-export const Setings = {
+export const Settings = {
     AvatarForm,
+    NameForm,
 };
