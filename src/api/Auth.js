@@ -51,7 +51,7 @@ async function retrieveSession() {
     const authContxt = await Auth.currentSession({
         bypassCache: false,
     });
-
+    console.log(authContxt);
     return authContxt.getAccessToken().getJwtToken();
 }
 

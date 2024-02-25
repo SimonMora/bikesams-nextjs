@@ -5,7 +5,7 @@ import { useAuth } from "@/hooks";
 
 export function Account() {
 
-    const { user } = useAuth;
+    const { user } = useAuth();
     const url = user ? "/account" : "/join/login";
 
   return (

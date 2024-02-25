@@ -25,7 +25,52 @@ async function listAllUsers(page = 1) {
     return result;
 }
 
+async function updateAvatar(userId, image) {
+    
+    try {
+        const url = `${ENV.MEDIA_API}${userId}.jpg`;
+        const params = {
+            method: "PUT",
+            headers: {
+                "Content-Type": "image/jpeg",
+            },
+            body: image,
+        };
+    
+        const response = await fetchAuthenticatedRequest(url, params);
+    
+        if (response.status !== 200) throw response;
+        
+        return true; 
+    } catch (error) {
+        throw error;
+    }
+}
+
+async function updateMe(data) {
+    try {
+        const url = `${ENV.API_URL}${ENV.ENDPOINTS.USER_ME}`;
+        const params = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': "application/json",
+            },
+            body: JSON.stringify(data),
+        };
+
+        const response = await fetchAuthenticatedRequest(url, params);
+        
+        if (response.status !== 200) throw response;
+        
+        return true;
+    } catch (error) {
+        throw error;
+    }
+}
+
 export const userContrl = {
     me,
     list: listAllUsers,
+    updateAvatar,
+    updateMe,
 };
