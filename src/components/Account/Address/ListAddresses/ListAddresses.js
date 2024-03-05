@@ -5,7 +5,8 @@ import { Loading, NoResults } from '@/components/Shared';
 import { add, map, size } from 'lodash';
 import { Address } from './Address';
 
-export function ListAddresses() {
+export function ListAddresses(props) {
+    const { reload , onReload } = props;
     const [addresses, setAddresses] = useState(null);
 
     useEffect(() => {
@@ -17,7 +18,7 @@ export function ListAddresses() {
             console.error(error);
         }
       })();
-    }, []);
+    }, [reload]);
 
     if (!addresses) {
         return <Loading text="Loading addresses" top={100} />
@@ -31,7 +32,7 @@ export function ListAddresses() {
 
         {
             map(addresses, (address) => (
-                <Address key={address.addId} address={address} />
+                <Address key={address.addId} address={address} onReload={onReload} />
             ))
         }
     </div>
