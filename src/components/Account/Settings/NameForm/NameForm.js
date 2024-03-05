@@ -8,7 +8,7 @@ export function NameForm() {
     const { user } = useAuth();
     
     const formik = useFormik({
-        initialValues: initialValues(user.userFirstName, user.userLastName),
+        initialValues: initialValues(user?.userFirstName, user?.userLastName),
         validationSchema: validateSchema(),
         validateOnChange: false,
         onSubmit: async (formValues) => {

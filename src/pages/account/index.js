@@ -5,11 +5,15 @@ import { useAuth } from '@/hooks';
 import { Separator } from '@/components/Shared';
 import { Settings } from '@/components/Account/Settings';
 import { Address } from '@/components/Account/Address';
+import { useState } from 'react';
 
 
 export default function AccountPage() {
 
     const { logout } = useAuth();
+    const [reload, setReload] = useState(false);
+
+    const onReload = () => setReload((prevState) => !prevState);
 
     const panes = [
         {
@@ -26,8 +30,8 @@ export default function AccountPage() {
             menuItem:"Addresses",
             render: () => (
                 <Tab.Pane>
-                    <Address.AddAddress />
-                    <Address.ListAddresses />
+                    <Address.AddAddress onReload={onReload} />
+                    <Address.ListAddresses reload={reload} onReload={onReload} />
                 </Tab.Pane>
             ),
         },

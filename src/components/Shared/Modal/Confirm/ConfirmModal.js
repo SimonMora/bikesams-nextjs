@@ -8,6 +8,7 @@ export function ConfirmModal(props) {
     const onConfirmWrapper = () => {
         setLoading(true);
         onConfirm();
+        setLoading(false);
     };
 
   return (
