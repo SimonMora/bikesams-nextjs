@@ -1,0 +1,18 @@
+@import "/src/scss/index.scss";
+
+.product {
+    height: 100%;
+
+    > a {
+        > div {
+            height: 100%;
+            border-radius: 5px;
+            background-color: $background-secondary;
+
+            > img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    }
+}
