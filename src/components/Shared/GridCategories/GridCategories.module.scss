@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+    margin-right: 0 -10px;
+}
+
+.category {
+    padding: 0 10px;
+    text-align: center;
+
+    &:hover {
+        opacity: 0.6;
+    }
+    
+    > img {
+        width: 100px;
+        height: 100px;
+        background: transparent;
+    }
+    > h3 {
+        margin-top: 10px;
+        font-size: 14px;
+    }
+}
+

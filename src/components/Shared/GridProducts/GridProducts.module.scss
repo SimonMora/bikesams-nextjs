@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px;
+
+    .oneColumn {
+        width: 100%;
+    }
+
+    .twoColumn {
+        width: 50%;
+    }
+
+    .threeColumn {
+        width: 33.33%;
+    }
+
+    .fourColumn {
+        width: 25%;
+    }
+
+    .fiveColumn {
+        width: 20%;
+    }
+
+    .sixColumn {
+        width: 16.66%;
+    }
+}
