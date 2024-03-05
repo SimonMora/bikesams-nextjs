@@ -4,6 +4,7 @@ import { BasicLayout } from '@/layouts';
 import { useAuth } from '@/hooks';
 import { Separator } from '@/components/Shared';
 import { Settings } from '@/components/Account/Settings';
+import { Address } from '@/components/Account/Address';
 
 
 export default function AccountPage() {
@@ -25,7 +26,8 @@ export default function AccountPage() {
             menuItem:"Addresses",
             render: () => (
                 <Tab.Pane>
-                    <h2>User Addresses</h2>
+                    <Address.AddAddress />
+                    <Address.ListAddresses />
                 </Tab.Pane>
             ),
         },

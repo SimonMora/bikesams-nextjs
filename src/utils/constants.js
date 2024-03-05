@@ -6,6 +6,7 @@ export const ENV = {
         USERS: "users",
         USER_ME:"users/me",
         ADDRESS:"addresses",
+        ADDRESS_ME:"addresses/me",
         CATEGORY:"categories",
         PRODUCT:"products",
         ORDER:"orders",
