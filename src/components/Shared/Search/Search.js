@@ -4,6 +4,7 @@ import { Input } from "semantic-ui-react";
 export function Search(props) {
     const { placeholder= "What do you need?", className, queryName = "search" } = props;
     const router = useRouter();
+    const inputValue = router.query[queryName] || "";
 
     const onChage = (_, data) => {
       if(data.value) {
@@ -23,7 +24,8 @@ export function Search(props) {
     <Input 
         placeholder={placeholder} 
         className={className}
-        icon={{name:"search", link: true}}
+        icon={{name: inputValue ? "close" : "search", link: true, onClick: cleanSearchParam}}
+        value={inputValue}
         onChange={onChage} 
     />
   )
