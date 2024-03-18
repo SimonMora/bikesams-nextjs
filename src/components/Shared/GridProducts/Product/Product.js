@@ -5,7 +5,7 @@ import { Image } from "semantic-ui-react";
 import styles from './Product.module.scss';
 import { fn } from "@/utils";
 
-const NOT_FOUND_IMAGE = "/image/not-found.png"
+const NOT_FOUND_IMAGE = "/image/not-found.png";
 
 export function Product(props) {
     const { product, classProduct } = props;
@@ -19,8 +19,8 @@ export function Product(props) {
         if (exist) {
             setImage(imageURL);
         }
-      })
-    }, [product])
+      });
+    }, [product]);
     
   return (
     <div 
