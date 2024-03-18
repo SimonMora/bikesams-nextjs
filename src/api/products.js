@@ -102,10 +102,31 @@ async function updateProductImage(productId, image) {
     }
 }
 
+async function getProductByCategorySlug(slug, page = 1, pageSize = 10) {
+    try {
+        const categoryFilter = `slug=${slug}`;
+        const paginationFilter = `page=${page}&pageSize=${pageSize}`;
+        
+        const filters = `${categoryFilter}&${paginationFilter}`;
+
+        const url = `${ENV.API_URL}${ENV.ENDPOINTS.PRODUCT}?${filters}`;
+
+        const response = await fetch(url);
+        const result = await response.json();
+
+        if(response.status !== 200) throw result;
+
+        return result;
+    } catch (error) {
+        throw error;
+    }
+}
+
 export const productControl = {
     getAll: getPaginatedProducts,
     create: createProduct,
     update: updateProduct,
     updateImage: updateProductImage,
     delete: deleteProduct,
+    getProductByCategSlug: getProductByCategorySlug
 };
