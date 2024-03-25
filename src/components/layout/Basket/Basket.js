@@ -2,16 +2,17 @@ import Link from 'next/link';
 import React from 'react';
 import { Icon, Label } from 'semantic-ui-react';
 import styles from './Basket.module.scss';
+import { useBasket } from '@/hooks';
 
-const totalItems = 6;
 
 export function Basket() {
+  const { total } = useBasket();
   return (
     <Link href="/basket" className={styles.basket}>
         <Icon name="cart"/>
-        {totalItems > 0 &&
+        {total > 0 &&
             <Label circular color="teal">
-                {totalItems}
+                {total}
             </Label>
         }
         My Basket

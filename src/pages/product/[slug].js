@@ -6,12 +6,16 @@ import { useEffect, useState } from "react";
 import { Separator } from "@/components/Shared";
 import { fn } from "@/utils";
 import { Product } from "@/components/Product";
+import { useBasket } from "@/hooks";
 
 const NOT_FOUND_IMAGE = "/image/not-found.png";
 
 export default function ProductPage(props) {
     const { product } = props;
     const [image, setImage] = useState(NOT_FOUND_IMAGE);
+
+    const {basket} = useBasket();
+    console.log(basket);
 
     useEffect(() => {
         const imageURL = fn.getImageUrl(product.prodId);
