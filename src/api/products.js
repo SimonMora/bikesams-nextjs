@@ -138,6 +138,22 @@ async function getProductBySlug(slug) {
     }
 }
 
+async function getProductById(productId) {
+    try {
+        const filter = `prodId=${productId}`;
+        const url = `${ENV.API_URL}${ENV.ENDPOINTS.PRODUCT}?${filter}`;
+
+        const response = await fetch(url);
+        const result = await response.json();
+
+        if (response.status !== 200) throw result;
+
+        return result.data[0];
+    } catch (error) {
+        throw error;
+    }
+}
+
 export const productControl = {
     getAll: getPaginatedProducts,
     create: createProduct,
@@ -146,4 +162,5 @@ export const productControl = {
     delete: deleteProduct,
     getProductByCategSlug: getProductByCategorySlug,
     getBySlug: getProductBySlug,
+    getById: getProductById,
 };
