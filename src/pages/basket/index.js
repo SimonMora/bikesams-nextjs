@@ -1,4 +1,5 @@
 import { productControl } from "@/api";
+import { Basket } from "@/components/Basket";
 import { Loading, NoResults } from "@/components/Shared";
 import { useBasket } from "@/hooks";
 import { BasketLayout } from "@/layouts";
@@ -38,9 +39,7 @@ export default function BasketPage() {
         )}
 
         {size(products) > 0 && currentStep === 1 && (
-          <div>
-            <p>Step 1</p>
-          </div>
+          <Basket.StepOne products={products} />
         )}
 
         {size(products) > 0 && currentStep === 2 && (
