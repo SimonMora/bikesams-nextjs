@@ -36,8 +36,26 @@ function count() {
     return countTemp;
 }
 
+function changeQuantity(productId, quantity) {
+    const products = getAll();
+    const productIndex = products.findIndex((product) => product.id === productId);
+   
+    products[productIndex].quantity = quantity;
+    
+    localStorage.setItem(ENV.BASKET, JSON.stringify(products));
+}
+
+function deleteItem(productId) {
+    const products = getAll();
+    const productsUpdated = products.filter((product) => product.id !== productId);
+    
+    localStorage.setItem(ENV.BASKET, JSON.stringify(productsUpdated));
+}
+
 export const  basketContrll = {
     getAll,
     add,
     count,
+    changeQuantity,
+    deleteItem,
 }; 

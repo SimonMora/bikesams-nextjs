@@ -11,26 +11,35 @@ export function BasketProvider(props) {
     useEffect(() => {
       const response = basketContrll.getAll();
       setBasket(response);
-    }, [])
+    }, []);
     
+    const refreshTotalBasket =  () => {
+        setTotal(basketContrll.count());
+        setBasket(basketContrll.getAll());
+    };
 
     const addProduct = (productId) => {
         basketContrll.add(productId);
         refreshTotalBasket();
     };
+    
+    const changeQuantityItem = (productId, quantity) => {
+        basketContrll.changeQuantity(productId,quantity);
+        refreshTotalBasket();
+    };
 
-    const refreshTotalBasket =  () => {
-        setTotal(basketContrll.count());
-        setBasket(basketContrll.getAll());
+    const deleteItem = (productId) => {
+        basketContrll.deleteItem(productId);
+        refreshTotalBasket();
     };
 
     const data = {
         basket,
         total,
         addProduct,
-        deleteItem: () => null,
+        deleteItem,
         deleteAllItems: () => null,
-        changeQuantityItem: () => null,
+        changeQuantityItem,
     };
 
     return (
