@@ -52,10 +52,15 @@ function deleteItem(productId) {
     localStorage.setItem(ENV.BASKET, JSON.stringify(productsUpdated));
 }
 
+function deleteAll() {
+    localStorage.removeItem(ENV.BASKET);
+}
+
 export const  basketContrll = {
     getAll,
     add,
     count,
     changeQuantity,
     deleteItem,
+    deleteAll,
 }; 

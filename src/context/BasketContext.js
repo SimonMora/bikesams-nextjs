@@ -33,12 +33,17 @@ export function BasketProvider(props) {
         refreshTotalBasket();
     };
 
+    const deleteAllItems = () => {
+        basketContrll.deleteAll();
+        refreshTotalBasket();
+    };
+
     const data = {
         basket,
         total,
         addProduct,
         deleteItem,
-        deleteAllItems: () => null,
+        deleteAllItems,
         changeQuantityItem,
     };
 
