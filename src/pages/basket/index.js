@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 export default function BasketPage() {
   const { basket} = useBasket();
   const [products, setProducts] = useState(null);
+  const [address, setAddress] = useState(null);
   const { query : { step = 1 } } = useRouter();
   const currentStep = Number(step);
 
@@ -44,7 +45,11 @@ export default function BasketPage() {
 
         {size(products) > 0 && currentStep === 2 && (
           <div>
-            <p>Step 2</p>
+            <Basket.StepTwo 
+              products={products} 
+              address={address} 
+              setAddress={setAddress}
+              nextDisabled={!address} />
           </div>
         )}
 
