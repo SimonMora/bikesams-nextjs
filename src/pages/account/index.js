@@ -6,6 +6,7 @@ import { Separator } from '@/components/Shared';
 import { Settings } from '@/components/Account/Settings';
 import { Address } from '@/components/Account/Address';
 import { useState } from 'react';
+import { Orders } from '@/components/Account/Orders';
 
 
 export default function AccountPage() {
@@ -39,7 +40,7 @@ export default function AccountPage() {
             menuItem:"Orders",
             render: () => (
                 <Tab.Pane>
-                    <h2>User Orders</h2>
+                    <Orders.ListOrders />
                 </Tab.Pane>
             ),
         },

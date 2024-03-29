@@ -56,9 +56,7 @@ export default function BasketPage() {
         )}
 
         {currentStep === 4 && (
-          <div>
-            <p>Step 4</p>
-          </div>
+          <Basket.StepFour />
         )}
     </BasketLayout>
   );

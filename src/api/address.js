@@ -87,9 +87,28 @@ async function deleteAddress(addId) {
     }
 }
 
+async function getAddressById(addId) {
+    try {
+        const filter = `addId=${addId}`
+        const url = `${ENV.API_URL}${ENV.ENDPOINTS.ADDRESS_ME}?${filter}`;
+
+        const response = await fetchAuthenticatedRequest(url);
+        const result = await response.json();
+
+        if (response.status !== 200) {
+            throw result;
+        }
+
+        return result[0] || null;
+    } catch (error) {
+        throw error;
+    }
+}
+
 export const addressContrl = {
     getAll: getAllAddresses,
     create: createAddress,
     update: updateAddress,
     delete: deleteAddress,
+    getById: getAddressById,
 };

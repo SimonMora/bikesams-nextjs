@@ -22,6 +22,22 @@ async function createOrder(data) {
     }
 }
 
+async function getAllOrders() {
+    try {
+        const url = `${ENV.API_URL}${ENV.ENDPOINTS.ORDER}`;
+
+        const response = await fetchAuthenticatedRequest(url);
+        const result = await response.json();
+
+        if (response.status !== 200) throw result;
+
+        return result;
+    } catch (error) {
+        throw error;
+    }
+}
+
 export const orderControll = {
     createOrder,
+    getAll: getAllOrders,
 };
