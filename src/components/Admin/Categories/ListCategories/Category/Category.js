@@ -3,7 +3,7 @@ import styles from './Category.module.scss';
 import { Modal } from '@/components/Shared';
 import { CategoryForm } from '../../CategoryForm';
 import { useState } from 'react';
-import { categContrl } from '@/api/categories';
+import { categContrl } from '@/api';
 
 export function Category(props) {
     const { category, onReload } = props;

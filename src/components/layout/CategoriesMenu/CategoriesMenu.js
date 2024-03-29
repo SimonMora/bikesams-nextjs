@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { map } from 'lodash';
 import Link from "next/link";
-import { categContrl } from "@/api/categories";
+import { categContrl } from "@/api";
 
 import styles from './CategoriesMenu.module.scss';
 

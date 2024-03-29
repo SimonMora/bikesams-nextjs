@@ -1,7 +1,7 @@
 import { useFormik } from "formik";
 import { Form } from "semantic-ui-react";
 import { initialSchema, validateSchema } from "./CategoryForm.form";
-import { categContrl } from "@/api/categories";
+import { categContrl } from "@/api";
 
 export function CategoryForm(props) {
     const { onClose, onReload, category } = props;

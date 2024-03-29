@@ -1,4 +1,4 @@
-import { categContrl } from "@/api/categories";
+import { categContrl } from "@/api";
 import { Loading, NoResults } from "@/components/Shared";
 import { useEffect, useState } from "react";
 import { size, map } from "lodash";

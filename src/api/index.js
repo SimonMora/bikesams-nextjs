@@ -4,3 +4,4 @@ export * from './products';
 export * from './address';
 export * from './basket';
 export * from './order';
+export * from './categories';

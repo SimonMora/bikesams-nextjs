@@ -1,4 +1,4 @@
-import { productControl } from "@/api/products";
+import { productControl } from "@/api";
 import { Loading, NoResults, Paginator } from "@/components/Shared";
 
 import { useEffect, useState } from "react";

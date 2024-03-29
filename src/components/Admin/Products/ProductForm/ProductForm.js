@@ -1,4 +1,4 @@
-import { categContrl } from "@/api/categories";
+import { categContrl, productControl } from "@/api";
 import { Separator } from "@/components/Shared";
 import { Editor } from "@tinymce/tinymce-react";
 import { useFormik } from "formik";
@@ -6,7 +6,6 @@ import { map } from 'lodash';
 import { useEffect, useState } from "react";
 import { Form } from "semantic-ui-react";
 import { initialValues, validationSchema } from "./ProductForm.form";
-import { productControl } from "@/api/products";
 
 export function ProductForm(props) {
     const { onClose, onReload, product } = props;
