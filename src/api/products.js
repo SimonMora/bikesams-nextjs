@@ -104,7 +104,7 @@ async function updateProductImage(productId, image) {
 
 async function getProductByCategorySlug(slug, page = 1, pageSize = 10) {
     try {
-        const categoryFilter = `slugCategory=${slug}`;
+        const categoryFilter = `slugCateg=${slug}`;
         const paginationFilter = `page=${page}&pageSize=${pageSize}`;
         
         const filters = `${categoryFilter}&${paginationFilter}`;

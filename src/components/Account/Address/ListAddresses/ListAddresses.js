@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './ListAddresses.module.scss';
-import { addressContrl } from '@/api/address';
+import { addressContrl } from '@/api';
 import { Loading, NoResults } from '@/components/Shared';
 import { add, map, size } from 'lodash';
 import { Address } from './Address';
